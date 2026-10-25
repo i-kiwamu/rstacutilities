@@ -1,0 +1,30 @@
+Package: rstacutilities
+Type: Package
+Title: Utilities of Rstac
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Kiwamu", "Ishikura",
+      email = "ishikura.kiwamu@gmail.com",
+      role = c("aut", "cre")
+    )
+  )
+Description: A collection of utility functions to use STAC API via rstac package.
+    Continuation lines should be indented.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 4.1.0)
+Imports: 
+    dplyr,
+    lubridate,
+    rlang,
+    rstac,
+    sf,
+    tibble,
+    tidyr
+Config/roxygen2/version: 8.0.0
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
