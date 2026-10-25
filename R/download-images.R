@@ -36,6 +36,6 @@ download_images <- function(df, nodata = 0) {
                                "-dstnodata", nodata))
   }
 
-  df$image_files <- image_file_names
+  df$image_path <- image_file_names
   return(df)
 }

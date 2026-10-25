@@ -22,6 +22,8 @@ Imports:
     rlang,
     rstac,
     sf,
+    stringr,
+    terra,
     tibble,
     tidyr
 Config/roxygen2/version: 8.0.0

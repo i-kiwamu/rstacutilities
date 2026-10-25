@@ -17,12 +17,16 @@ prepare_download <- function(catalog, asset_names, polygon) {
                              prepare_download_feature(feature,
                                                       asset_names))
                    })) |>
-    sf::st_filter(polygon) |>
-    tibble::as_tibble() |>
-    dplyr::select(-"geometry")
+    dplyr::as_tibble() |>
+    dplyr::rename(geometry_image = geometry)
   df_prepare <- tidyr::crossing(df_assets, polygon) |>
     sf::st_as_sf(crs = sf::st_crs(polygon)) |>
-    dplyr::distinct_at(dplyr::vars(-"href"), .keep_all = TRUE)
+    dplyr::filter(sf::st_intersects(.data$geometry_image, .data$geometry,
+                                    by_element = TRUE)) |>
+    dplyr::as_tibble() |>
+    dplyr::select(-"geometry_image") |>
+    sf::st_as_sf() |>
+    dplyr::distinct_at(dplyr::vars(-c("href", "mgrs_tile")), .keep_all = TRUE)
   return(df_prepare)
 }
 
@@ -35,6 +39,7 @@ prepare_download_feature <- function(feature, asset_names) {
                    epsg = feature$properties$`proj:epsg`,
                    datetime = feature$properties$datetime,
                    platform = feature$properties$platform,
+                   mgrs_tile = feature$properties$`s2:mgrs_tile`,
                    geometry = rstac::items_as_sf(feature)$geometry) |>
            tibble::as_tibble() |>
            sf::st_as_sf())
