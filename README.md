@@ -6,7 +6,7 @@ rstacutilities is a R package containing some utility functions to use [`rstac`]
 
 ## Install
 
-```{r}
+```r
 remotes::install_github("i-kiwamu/rstacutilities")
 ```
 
@@ -14,7 +14,7 @@ remotes::install_github("i-kiwamu/rstacutilities")
 
 For example, we would like to download Sentinel-2 images (L2A products) from 2019-04-01 to 2019-08-02 only in two agricultural fields (`fieldsHRO` object bundled in this package).
 
-```{r}
+```r
 library(tidyverse)
 library(rstacutilities)
 
