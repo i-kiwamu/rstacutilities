@@ -4,6 +4,7 @@
 #' @param df A `dataframe` after download
 #' @param filename_template A `character` to pass `stringr::str_glue()`
 #' @return A dataframe
+#' @export
 merge_bands <- function(df, filename_template) {
   df_with_names <- df |>
     dplyr::mutate(filename = stringr::str_glue(filename_template)) |>

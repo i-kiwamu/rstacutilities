@@ -2,6 +2,7 @@
 
 export(download_images)
 export(items_filter_date)
+export(merge_bands)
 export(prepare_download)
 export(preview_rgb)
 export(search_catalog)
